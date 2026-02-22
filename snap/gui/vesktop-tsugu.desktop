@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Vesktop
+Exec=vesktop-tsugu
+Icon=${SNAP}/meta/gui/vesktop-tsugu.png
+Comment=Vesktop is a custom Discord App aiming to give you better performance and improve linux support
+Type=Application
+MimeType=x-content/unix-software;

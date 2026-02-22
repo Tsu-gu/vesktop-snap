@@ -1,0 +1,51 @@
+name: vesktop-tsugu
+base: core24
+version: '1.6.5'
+summary: Vesktop is a custom Discord App
+description: |
+  Vesktop comes with Vencord out of the box, allowing you to customize your Discord experience with many powerful plugins and themes. Privacy friendly.
+
+grade: stable
+confinement: strict
+
+platforms:
+  amd64:
+    build-on: [amd64]
+    build-for: [amd64]
+  arm64:
+    build-on: [arm64]
+    build-for: [arm64]
+
+
+parts:
+  vesktop-tsugu:
+    source:
+      - on amd64 to amd64: https://github.com/Vencord/Vesktop/releases/download/v${SNAPCRAFT_PROJECT_VERSION}/vesktop_${SNAPCRAFT_PROJECT_VERSION}_amd64.deb
+      - on arm64 to arm64: https://github.com/Vencord/Vesktop/releases/download/v${SNAPCRAFT_PROJECT_VERSION}/vesktop_${SNAPCRAFT_PROJECT_VERSION}_arm64.deb
+    plugin: dump
+    source-type: deb
+    stage-packages: [libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0, libappindicator3-1]
+
+apps:
+  vesktop-tsugu:
+    command: opt/Vesktop/vesktop --no-sandbox --disable-dev-shm-usage
+    extensions: [gnome]
+    environment:
+      HOME: "$SNAP_USER_DATA"
+      TMPDIR: "$XDG_RUNTIME_DIR"
+      ELECTRON_DISABLE_SANDBOX: "1"
+      LD_LIBRARY_PATH: >
+       $SNAP/opt/Vesktop:
+       $LD_LIBRARY_PATH
+    plugs:
+      - network
+      - network-bind
+      - home
+      - removable-media
+      - audio-playback
+      - audio-record
+      - unity7
+      - password-manager-service
+      - browser-support
+      - opengl
+      
