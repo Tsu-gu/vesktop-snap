@@ -29,6 +29,7 @@ parts:
 apps:
   vesktop-tsugu:
     command: opt/Vesktop/vesktop --no-sandbox --disable-dev-shm-usage
+    autostart: vesktop.desktop
     extensions: [gnome]
     environment:
       HOME: "$SNAP_USER_DATA"
