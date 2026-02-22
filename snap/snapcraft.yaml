@@ -46,7 +46,6 @@ apps:
       - audio-playback
       - audio-record
       - unity7
-      - password-manager-service
       - browser-support
       - opengl
       
